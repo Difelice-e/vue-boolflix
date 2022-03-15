@@ -1,12 +1,16 @@
 <template>
   <section>
-    <SearchBar @searchByName="searchFilter"/>
-
-    <FilmItem v-for="(movie, i) in movies" 
-    :key="i" 
-    :movie="movie"/>
-
+      <div>
+        <SearchBar @searchByName="searchFilter"/>
+      </div>
+      <div class="movie_wrapper container">
+        <FilmItem v-for="(movie, i) in movies" 
+        :key="i" 
+        :movie="movie"/>
+      </div>
   </section>
+  
+  
 </template>
 
 <script>
@@ -46,11 +50,31 @@ export default {
             .catch( error => {
             console.log(error.response)
             })
+
+            axios.get(`${this.baseURL}/search/tv`, {
+            params: {
+            api_key: 'bab6bf2018fe2a02fb4ff2a26ccb51f2',
+            query: this.search,
+            language: 'it-IT'
+            }
+            })
+            .then( res => {
+            this.movies.push(...res.data.results)
+            })
+            .catch( error => {
+            console.log(error.response)
+            })
         }
     },
 }
 </script>
 
 <style lang="scss" scoped>
-
+.movie_wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        align-items: center;     
+}
 </style>
