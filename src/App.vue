@@ -1,17 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <input type="text" v-model="search">
+    </div>
+    
+    <div v-for="(movie, i) in movies" :key="i" > 
+      {{movie}}
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    
+  },
+  data() {
+    return {
+      movies: [],
+      search: ''
+    }
+  },
+  created() {
+    axios.get('')
+    .then( res => {
+      console.log(res.data)
+    })
+    .catch( error => {
+      console.log(error.response)
+    })
   }
 }
 </script>
