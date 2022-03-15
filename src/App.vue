@@ -1,38 +1,21 @@
 <template>
   <div id="app">
-    <div>
-      <input type="text" v-model="search">
-    </div>
-    
-    <div v-for="(movie, i) in movies" :key="i" > 
-      {{movie}}
-    </div>
+    <MainHeader />
+    <MainContent />
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import MainHeader from "./components/MainHeader"
+import MainContent from "./components/MainContent"
 
 export default {
   name: 'App',
   components: {
-    
+    MainHeader,
+    MainContent
   },
-  data() {
-    return {
-      movies: [],
-      search: ''
-    }
-  },
-  created() {
-    axios.get('')
-    .then( res => {
-      console.log(res.data)
-    })
-    .catch( error => {
-      console.log(error.response)
-    })
-  }
+  
 }
 </script>
 
