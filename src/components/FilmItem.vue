@@ -1,5 +1,9 @@
 <template>
       <div class="item_wrapper">
+        <figure class="film-poster">
+            <img :src="baseImgUrl+movie.poster_path" alt="">
+        </figure>
+        
         <h3 v-if="movie.title">{{ movie.original_title}}</h3>
         <h3 v-else>{{ movie.original_name}}</h3>
         
@@ -10,7 +14,6 @@
             <img :src="require(`../assets/img/${movie.original_language}.png`)" alt="">
         </figure>
 
-        {{movie.original_language}}
         {{ movie.vote_average }} 
       </div>
 </template>
@@ -21,6 +24,10 @@ export default {
     props: {
         movie: {
             type: Object,
+            required: true
+        },
+        baseImgUrl: {
+            type: String,
             required: true
         }
     }
@@ -33,14 +40,12 @@ export default {
         min-height: 130px;
         border: 1px solid black;
 
+        .film-poster {
+            width: 100px;
+        }
+        
         .language-flag {
             width: 40px;
-            
-
-            img {
-                max-width: 100%;
-                display: block;
-            }
         }
     }
     

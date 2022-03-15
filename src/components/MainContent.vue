@@ -6,7 +6,9 @@
       <div class="movie_wrapper container">
         <FilmItem v-for="(movie, i) in movies" 
         :key="i" 
-        :movie="movie"/>
+        :movie="movie"
+        :baseImgUrl="baseImgURL"
+        />
       </div>
   </section>
   
@@ -29,7 +31,8 @@ export default {
         return {
         movies: [],
         search: '',
-        baseURL: 'https://api.themoviedb.org/3'
+        baseURL: 'https://api.themoviedb.org/3',
+        baseImgURL: 'https://image.tmdb.org/t/p/w342'
         }
     },
 

@@ -35,6 +35,11 @@ export default {
   box-sizing: border-box;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
 .container {
   max-width: 1240px;
   margin: 0 auto;
