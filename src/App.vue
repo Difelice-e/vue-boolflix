@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <SearchBar />
-    <h2>stringa:{{search}}</h2>
 
     <div class="movie_wrapper container">
       <FilmItem
@@ -109,5 +108,12 @@ img {
 .container {
   max-width: 1240px;
   margin: 0 auto;
+}
+
+.movie_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 </style>
