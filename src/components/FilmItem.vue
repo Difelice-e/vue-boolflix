@@ -15,7 +15,7 @@
             <span v-else>{{movie.original_language}}</span>
         </figure>
 
-        {{ movie.vote_average }} 
+        {{ stars(movie) }} 
         
       </div>
 </template>
@@ -37,6 +37,11 @@ export default {
         },
         flags: {
             type: Object
+        }
+    },
+    methods: {
+        stars: function (element) {
+            return Math.floor((element.vote_average / 2))
         }
     }
 }
