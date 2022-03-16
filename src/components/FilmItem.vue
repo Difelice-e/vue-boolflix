@@ -15,7 +15,17 @@
             <span v-else>{{movie.original_language}}</span>
         </figure>
 
-        {{ stars(movie) }} 
+        <div>
+            <span :class="i<stars(movie) ? 'star' : ''" v-for="(el, i) in 5" :key="i">
+                <span v-if="i<stars(movie)">
+                    &starf;
+                </span>
+                <span v-else>
+                    &star;
+                </span>
+            </span>
+        </div>
+        
         
       </div>
 </template>
@@ -59,6 +69,11 @@ export default {
         
         .language-flag {
             width: 40px;
+        }
+
+        .star {
+            
+            color: orange;
         }
     }
     
