@@ -51,7 +51,7 @@ export default {
     },
     methods: {
         stars: function (element) {
-            return Math.floor((element.vote_average / 2))
+            return Math.ceil((element.vote_average / 2))
         }
     }
 }
