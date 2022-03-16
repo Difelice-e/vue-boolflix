@@ -11,10 +11,12 @@
         <h4 v-else>{{ movie.name}}</h4>
 
         <figure class="language-flag">
-            <img :src="require(`../assets/img/${movie.original_language}.png`)" alt="">
+            <img v-if="flags[movie.original_language]" :src="flags[movie.original_language]" alt="">
+            <span v-else>{{movie.original_language}}</span>
         </figure>
 
         {{ movie.vote_average }} 
+        
       </div>
 </template>
 
@@ -29,6 +31,12 @@ export default {
         baseImgUrl: {
             type: String,
             required: true
+        },
+        cambioValutazione: {
+            type: Function
+        },
+        flags: {
+            type: Object
         }
     }
 }
@@ -41,7 +49,7 @@ export default {
         border: 1px solid black;
 
         .film-poster {
-            width: 100px;
+            // width: 100px;
         }
         
         .language-flag {

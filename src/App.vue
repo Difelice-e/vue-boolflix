@@ -1,27 +1,93 @@
 <template>
   <div id="app">
-    <MainHeader />
-    <MainContent />
+    <SearchBar />
+    <h2>stringa:{{search}}</h2>
+
+    <div class="movie_wrapper container">
+      <FilmItem
+        v-for="(movie, i) in movies"
+        :key="i"
+        :movie="movie"
+        :baseImgUrl="baseImgURL"
+        :flags="flags"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import MainHeader from "./components/MainHeader"
-import MainContent from "./components/MainContent"
+import SearchBar from "./components/SearchBar"
+import FilmItem from "./components/FilmItem.vue"
+
+import state from './store.js'
+import axios from 'axios' 
 
 export default {
   name: 'App',
   components: {
-    MainHeader,
-    MainContent
+    SearchBar,
+    FilmItem
   },
-  
+  data() {
+        return {
+          baseImgURL: 'https://image.tmdb.org/t/p/w342',
+          flags: {
+              it: require('./assets/img/it.png'),
+              en: require('./assets/img/en.png'),
+              de: require('./assets/img/de.png'),
+              fr: require('./assets/img/fr.png'),
+              es: require('./assets/img/es.png')
+        }
+      }
+  },
+
+  methods: {
+    searchFilter: function (filtro) {
+    this.search = filtro
+
+      axios.get(`${this.baseURL}/search/movie`, {
+        params: {
+        api_key: 'bab6bf2018fe2a02fb4ff2a26ccb51f2',
+        query: this.search,
+        language: 'it-IT'
+        }
+        })
+        .then( res => {
+        this.movies = res.data.results
+        })
+        .catch( error => {
+        console.log(error.response)
+      })
+
+      axios.get(`${this.baseURL}/search/tv`, {
+        params: {
+        api_key: 'bab6bf2018fe2a02fb4ff2a26ccb51f2',
+        query: this.search,
+        language: 'it-IT'
+        }
+      })
+      .then( res => {
+      this.movies.push(...res.data.results)
+      })
+      .catch( error => {
+      console.log(error.response)
+      })
+  },
+  },
+  computed: {
+    search: function () {
+    return state.search
+    },
+    movies: function() {
+      return state.movies
+    }
+  }
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
