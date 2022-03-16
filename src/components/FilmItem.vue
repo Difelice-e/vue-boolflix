@@ -15,15 +15,15 @@
             <span v-else>{{movie.original_language}}</span>
         </figure>
 
-        <div>
-            <span :class="i<stars(movie) ? 'star' : ''" v-for="(el, i) in 5" :key="i">
+        <div class="star_wrapper">
+            <div :class="i<stars(movie) ? 'star' : ''" v-for="(el, i) in 5" :key="i">
                 <span v-if="i<stars(movie)">
                     &starf;
                 </span>
                 <span v-else>
                     &star;
                 </span>
-            </span>
+            </div>
         </div>
         
         
@@ -71,6 +71,12 @@ export default {
             width: 40px;
         }
 
+        .star_wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
         .star {
             
             color: orange;
