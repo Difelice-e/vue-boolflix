@@ -89,10 +89,17 @@ export default {
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #B8B8B8;
   background-color: #434343;
   height: 100vh;
+}
+
+::-webkit-scrollbar {
+    background: transparent; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
 }
 
 * {
@@ -118,7 +125,7 @@ img {
   align-items: center;
   gap: 15px 15px;
   height: calc(100% - 104px);
-  padding: 100px 10px;
+  padding: 50px 10px 20px;
   overflow: auto;
 }
 </style>

@@ -5,12 +5,12 @@
     </figure>
 
     <div class="film-info">
-      <!-- <h3 v-if="movie.title">{{ movie.original_title }}</h3>
-      <h3 v-else>{{ movie.original_name }}</h3> -->
-      <h3>{{movie.original_title || movie.original_name}}</h3>
+      <p><span class="text-info">Titolo:</span>{{movie.original_title || movie.original_name}}</p>
 
-      <h4>{{movie.title || movie.name}}</h4>
-
+      <p><span class="text-info">Titolo originale:</span>{{movie.title || movie.name}}</p>
+      
+      <div class="language">
+        <span class="text-info">Lingua:</span>
       <figure class="language-flag">
         <img
           v-if="flags[movie.original_language]"
@@ -19,8 +19,11 @@
         />
         <span v-else>{{ movie.original_language }}</span>
       </figure>
+      </div>
+      
 
       <div class="star_wrapper">
+        <span class="text-info">Voto:</span>
         <div
           :class="i < stars(movie) ? 'star' : ''"
           v-for="(el, i) in 5"
@@ -30,6 +33,8 @@
           <span v-else> &star; </span>
         </div>
       </div>
+
+      <p><span class="text-info">Overview:</span>{{ movie.overview }}</p>
     </div>
   </div>
 </template>
@@ -65,18 +70,18 @@ export default {
 .item_wrapper {
   flex-grow: 1;
   width: 250px;
-  height: 350px;
+  height: 400px;
   border: 1px solid black;
   overflow: hidden;
   position: relative;
   border: 1px solid white;
 
   &:hover .film-poster {
-    opacity: 0;
+    display: none;
   }
 
   .film-poster {
-    opacity: 1;
+    display: block;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -87,12 +92,26 @@ export default {
   .film-info {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
+      gap: 5px;
+      overflow: auto;
+      height: 100%;
+      padding: 15px 10px;
+      font-size: 0.8rem;
 
       .language-flag {
-      width: 40px;
+      width: 30px;   
   }
+
+  .language {
+    display: flex;
+    align-items: center;
+  }
+
+  .text-info {
+        color: #E6E6E6;
+        margin-right: 5px;
+      }
 
   .star_wrapper {
     display: flex;
