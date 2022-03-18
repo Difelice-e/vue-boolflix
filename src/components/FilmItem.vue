@@ -5,11 +5,11 @@
     </figure>
 
     <div class="film-info">
-      <h3 v-if="movie.title">{{ movie.original_title }}</h3>
-      <h3 v-else>{{ movie.original_name }}</h3>
+      <!-- <h3 v-if="movie.title">{{ movie.original_title }}</h3>
+      <h3 v-else>{{ movie.original_name }}</h3> -->
+      <h3>{{movie.original_title || movie.original_name}}</h3>
 
-      <h4 v-if="movie.title">{{ movie.title }}</h4>
-      <h4 v-else>{{ movie.name }}</h4>
+      <h4>{{movie.title || movie.name}}</h4>
 
       <figure class="language-flag">
         <img
@@ -89,7 +89,7 @@ export default {
       justify-content: center;
 
       .language-flag {
-    width: 40px;
+      width: 40px;
   }
 
   .star_wrapper {
@@ -99,7 +99,7 @@ export default {
   }
 
   .star {
-    color: orange;
+    color: gold;
   }
   }
   
