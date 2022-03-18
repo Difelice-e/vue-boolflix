@@ -5,7 +5,12 @@
     </div>
 
     <div class="search-control">
-      <input @keyup.enter="setSearch" type="text" v-model="search" placeholder="Cerca film e serie TV"/>
+      <input
+        @keyup.enter="setSearch"
+        type="text"
+        v-model="search"
+        placeholder="Cerca film e serie TV"
+      />
       <button @click="setSearch">Cerca!</button>
     </div>
   </header>
@@ -13,7 +18,7 @@
 
 <script>
 import state from "../store.js";
-import { searchFilter } from '../store.js'
+import { searchFilter } from "../store.js";
 
 export default {
   name: "SearchBar",
@@ -26,7 +31,7 @@ export default {
     setSearch: function () {
       state.search = this.search;
 
-      searchFilter()
+      searchFilter();
     },
   },
 };
@@ -45,13 +50,12 @@ export default {
 .title {
   text-transform: uppercase;
   font-size: 1.75rem;
-  color: #B20000;
+  color: #b20000;
 }
 
 .search-control {
   display: flex;
   align-items: center;
-
 
   input {
     max-width: 500px;

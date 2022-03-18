@@ -5,22 +5,27 @@
     </figure>
 
     <div class="film-info">
-      <p><span class="text-info">Titolo:</span>{{movie.original_title || movie.original_name}}</p>
+      <p>
+        <span class="text-info">Titolo:</span
+        >{{ movie.original_title || movie.original_name }}
+      </p>
 
-      <p><span class="text-info">Titolo originale:</span>{{movie.title || movie.name}}</p>
-      
+      <p>
+        <span class="text-info">Titolo originale:</span
+        >{{ movie.title || movie.name }}
+      </p>
+
       <div class="language">
         <span class="text-info">Lingua:</span>
-      <figure class="language-flag">
-        <img
-          v-if="flags[movie.original_language]"
-          :src="flags[movie.original_language]"
-          alt=""
-        />
-        <span v-else>{{ movie.original_language }}</span>
-      </figure>
+        <figure class="language-flag">
+          <img
+            v-if="flags[movie.original_language]"
+            :src="flags[movie.original_language]"
+            alt=""
+          />
+          <span v-else>{{ movie.original_language }}</span>
+        </figure>
       </div>
-      
 
       <div class="star_wrapper">
         <span class="text-info">Voto:</span>
@@ -90,43 +95,42 @@ export default {
   }
 
   .film-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    overflow: auto;
+    height: 100%;
+    padding: 15px 10px;
+    font-size: 1rem;
+
+    &:hover ::-webkit-scrollbar {
+      background-color: grey;
+    }
+
+    .language-flag {
+      width: 20px;
+    }
+
+    .language {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 5px;
-      overflow: auto;
-      height: 100%;
-      padding: 15px 10px;
-      font-size: 0.8rem;
+      align-items: center;
+    }
 
-      &:hover ::-webkit-scrollbar {
-        background-color: grey;
-      }
+    .text-info {
+      color: #e6e6e6;
+      margin-right: 5px;
+    }
 
-      .language-flag {
-      width: 20px;   
+    .star_wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .star {
+      color: gold;
+    }
   }
-
-  .language {
-    display: flex;
-    align-items: center;
-  }
-
-  .text-info {
-        color: #E6E6E6;
-        margin-right: 5px;
-      }
-
-  .star_wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .star {
-    color: gold;
-  }
-  }
-  
 }
 </style>
