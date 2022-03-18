@@ -2,7 +2,7 @@
   <div id="app">
     <SearchBar />
 
-    <div class="movie_wrapper container">
+    <div class="movie_wrapper container" v-if="movies.length !== 0">
       <FilmItem
         v-for="(movie, i) in movies"
         :key="i"
@@ -10,6 +10,10 @@
         :baseImgUrl="baseImgURL"
         :flags="flags"
       />
+    </div>
+
+    <div class="movie_wrapper container" v-else>
+      <h2>Cerca tra milioni di film e serie tv nel nostro catalogo!</h2>
     </div>
   </div>
 </template>
@@ -142,5 +146,10 @@ img {
   height: calc(100% - 154px);
   padding: 0px 10px 20px;
   overflow: auto;
+
+  h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
 }
 </style>
