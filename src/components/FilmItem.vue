@@ -63,11 +63,13 @@ export default {
 
 <style lang="scss" scoped>
 .item_wrapper {
-  width: 20%;
+  flex-grow: 1;
+  width: 250px;
   height: 350px;
   border: 1px solid black;
   overflow: hidden;
   position: relative;
+  border: 1px solid white;
 
   &:hover .film-poster {
     opacity: 0;

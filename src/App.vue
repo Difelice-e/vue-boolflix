@@ -90,7 +90,9 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #B8B8B8;
+  background-color: #434343;
+  height: 100vh;
 }
 
 * {
@@ -114,5 +116,9 @@ img {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  gap: 15px 15px;
+  height: calc(100% - 104px);
+  padding: 100px 10px;
+  overflow: auto;
 }
 </style>
