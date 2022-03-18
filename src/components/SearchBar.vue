@@ -39,6 +39,7 @@ export default {
   align-items: center;
   background-color: black;
   padding: 20px 50px;
+  margin-bottom: 50px;
 }
 
 .title {

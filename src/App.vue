@@ -94,13 +94,28 @@ export default {
   height: 100vh;
 }
 
-::-webkit-scrollbar {
-    background: transparent; 
-}
 
-::-webkit-scrollbar-thumb {
-    background: transparent;
-}
+// scrollbar 
+::-webkit-scrollbar { 
+    width: 8px ;
+    padding: 0 2px;
+  } 
+
+  ::-webkit-scrollbar-thumb  { 
+    visibility: hidden; 
+    border-radius: 5px; 
+    background: #B20000;
+  } 
+
+  .container:hover::-webkit-scrollbar-thumb  { 
+    visibility:  visible;
+  }
+
+  .film-info:hover::-webkit-scrollbar-thumb  { 
+    visibility:  visible;
+  }
+
+// -----
 
 * {
   margin: 0;
@@ -124,8 +139,8 @@ img {
   justify-content: center;
   align-items: center;
   gap: 15px 15px;
-  height: calc(100% - 104px);
-  padding: 50px 10px 20px;
+  height: calc(100% - 154px);
+  padding: 0px 10px 20px;
   overflow: auto;
 }
 </style>

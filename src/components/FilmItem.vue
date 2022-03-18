@@ -99,8 +99,12 @@ export default {
       padding: 15px 10px;
       font-size: 0.8rem;
 
+      &:hover ::-webkit-scrollbar {
+        background-color: grey;
+      }
+
       .language-flag {
-      width: 30px;   
+      width: 20px;   
   }
 
   .language {
